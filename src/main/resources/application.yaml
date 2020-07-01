@@ -18,13 +18,14 @@ management:
     web:
       base-path:
       exposure:
-        include: env, health, info, metrics, prometheus
+        include: env, health, info
   endpoint:
     health:
       show-details: always
 
 info:
-  version: 1.0.0
-  name: Contact Us Demo
-  camp: Spring Boot Camp
-  link: https://albertattard.github.io/spring-boot-camp/
+  app:
+    version: 1.0.0
+    name: Contact Us Demo
+    camp: Spring Boot Camp
+    link: https://albertattard.github.io/spring-boot-camp/

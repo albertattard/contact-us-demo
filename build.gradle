@@ -6,6 +6,8 @@ plugins {
 
   id 'info.solidsoft.pitest' version '1.5.1'
   id 'com.dorongold.task-tree' version '1.5'
+
+  id 'com.gorylenko.gradle-git-properties' version '2.2.2'
 }
 
 /* Integration Tests */
@@ -44,6 +46,9 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-batch'
   runtimeOnly 'org.flywaydb:flyway-core'
   runtimeOnly 'org.postgresql:postgresql'
+
+  /* Either/Functional functions */
+  implementation 'io.vavr:vavr:0.9.0'
 
   /* Prometheus */
   runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
