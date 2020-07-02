@@ -25,6 +25,13 @@ public class ContactUsApplicationTests {
   }
 
   @Test
+  @DisplayName( "should return 200 when the metrics office count endpoint is accessed" )
+  public void shouldReturn200MetricsOfficeCountEndpoint() {
+    assertThat( restTemplate.getForEntity( "/metrics/app.office.count", String.class ) )
+      .matches( r -> r.getStatusCode() == HttpStatus.OK );
+  }
+
+  @Test
   @DisplayName( "should return the offices" )
   public void shouldReturnTheOffices() {
     final Office cologne =
