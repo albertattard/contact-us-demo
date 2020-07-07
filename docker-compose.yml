@@ -5,8 +5,6 @@ services:
     container_name: ${DATABASE_NAME}-prometheus
     ports:
       - 9090:9090
-    env_file:
-      - .env
     command:
       - --config.file=/etc/prometheus/prometheus.yaml
     volumes:

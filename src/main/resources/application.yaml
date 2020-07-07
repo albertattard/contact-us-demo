@@ -19,9 +19,6 @@ management:
       base-path:
       exposure:
         include: env, health, info, metrics, prometheus
-  endpoint:
-    health:
-      show-details: always
 
 info:
   app:
