@@ -1,4 +1,4 @@
-package demo.boot;
+package demo.boot.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Office {
+public class RegistrationRequest {
 
   private String name;
-  private String address;
-  private String phone;
-  private String email;
+  private FoodType foodPreference;
+
 }

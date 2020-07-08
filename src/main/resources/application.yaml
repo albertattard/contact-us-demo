@@ -13,6 +13,12 @@ spring:
     hibernate:
       ddl-auto: validate
 
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
 management:
   endpoints:
     web:
@@ -26,3 +32,8 @@ info:
     name: Contact Us Demo
     camp: Spring Boot Camp
     link: https://albertattard.github.io/spring-boot-camp/
+
+app:
+  queue:
+    food: ${APP_FOOD_QUEUE_NAME}
+    event: ${APP_EVENT_QUEUE_NAME}

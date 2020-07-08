@@ -1,4 +1,4 @@
-package demo.boot;
+package demo.boot.office;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

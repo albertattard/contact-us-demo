@@ -47,6 +47,9 @@ dependencies {
   runtimeOnly 'org.flywaydb:flyway-core'
   runtimeOnly 'org.postgresql:postgresql'
 
+  /* MQ */
+  implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
   /* Either/Functional functions */
   implementation 'io.vavr:vavr:0.9.0'
 
@@ -72,10 +75,13 @@ pitest {
 
 bootRun {
   doFirst {
-    file("$rootDir/.env").readLines().each() {
-      def (key, value) = it.split('=', 2)
-      environment key, value
-    }
+    file("$rootDir/.env")
+      .readLines()
+      .findAll({ line -> !line.isBlank() && !line.startsWith("#") })
+      .each() {
+        def (key, value) = it.split('=', 2)
+        environment key, value
+      }
   }
 }
 

@@ -1,4 +1,4 @@
-package demo.boot;
+package demo.boot.office;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;

@@ -1,4 +1,4 @@
-package demo.boot;
+package demo.boot.office;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

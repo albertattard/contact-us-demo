@@ -1,4 +1,4 @@
-package demo.boot;
+package demo.boot.office;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Optional;
 
-import static demo.boot.OfficeCountMetricDecorator.Factory;
+import static demo.boot.office.OfficeCountMetricDecorator.Factory;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.same;

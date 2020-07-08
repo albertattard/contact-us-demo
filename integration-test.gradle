@@ -30,10 +30,13 @@ task integrationTest(type: Test) {
   }
 
   doFirst {
-    file("$rootDir/.env").readLines().each() {
-      def (key, value) = it.split('=', 2)
-      environment key, value
-    }
+    file("$rootDir/.env")
+      .readLines()
+      .findAll({ line -> !line.isBlank() && !line.startsWith("#") })
+      .each() {
+        def (key, value) = it.split('=', 2)
+        environment key, value
+      }
   }
 }
 

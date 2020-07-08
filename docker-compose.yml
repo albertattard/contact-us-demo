@@ -1,16 +1,7 @@
 version: "3.8"
 services:
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: ${DATABASE_NAME}-prometheus
-    ports:
-      - 9090:9090
-    command:
-      - --config.file=/etc/prometheus/prometheus.yaml
-    volumes:
-      - ./docker/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
   postgres:
-    container_name: ${DATABASE_NAME}-pg
+    container_name: ${APPLICATION_NAME}-pg
     image: postgres:11.1
     restart: unless-stopped
     networks:
@@ -29,8 +20,8 @@ services:
       retries: 5
       start_period: 30s
   pgadmin4:
-    container_name: ${DATABASE_NAME}-pgadmin4
-    image: dpage/pgadmin4:4.22
+    container_name: ${APPLICATION_NAME}-pgadmin4
+    image: dpage/pgadmin4:4.23
     restart: unless-stopped
     networks:
       - app-net
@@ -40,7 +31,27 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${DATABASE_USERNAME}
       PGADMIN_DEFAULT_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - "8000:80"
+      - 8000:80
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: ${APPLICATION_NAME}-prometheus
+    ports:
+      - 9090:9090
+    command:
+      - --config.file=/etc/prometheus/prometheus.yaml
+    volumes:
+      - ./docker/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+  rabbitmq:
+    container_name: ${APPLICATION_NAME}-rabbitmq
+    image: rabbitmq:3.8.5-management-alpine
+    ports:
+      - ${RABBITMQ_PORT}:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    volumes:
+      - ./docker/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
 networks:
   app-net:
     driver: bridge
