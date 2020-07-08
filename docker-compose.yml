@@ -15,8 +15,6 @@ services:
     restart: unless-stopped
     networks:
       - app-net
-    env_file:
-      - .env
     ports:
       - ${DATABASE_PORT}:5432
     environment:
@@ -36,14 +34,11 @@ services:
     restart: unless-stopped
     networks:
       - app-net
-    env_file:
-      - .env
     volumes:
-      - ./docker/pgadmin4/servers.json:/pgadmin4/external/servers.json:ro
+      - ./docker/pgadmin4/servers.json:/pgadmin4/servers.json:ro
     environment:
       PGADMIN_DEFAULT_EMAIL: ${DATABASE_USERNAME}
       PGADMIN_DEFAULT_PASSWORD: ${DATABASE_PASSWORD}
-      PGADMIN_SERVER_JSON_FILE: /pgadmin4/external/servers.json
     ports:
       - "8000:80"
 networks:
