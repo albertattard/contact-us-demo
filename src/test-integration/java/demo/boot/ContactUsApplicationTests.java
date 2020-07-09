@@ -1,5 +1,6 @@
-package demo.boot.office;
+package demo.boot;
 
+import demo.boot.office.Office;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
