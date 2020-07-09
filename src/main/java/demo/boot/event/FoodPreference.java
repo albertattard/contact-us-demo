@@ -1,6 +1,6 @@
 package demo.boot.event;
 
-public enum FoodType {
+public enum FoodPreference {
   NO_FOOD,
   VEGETARIAN,
   VEGAN,

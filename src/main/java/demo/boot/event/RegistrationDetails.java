@@ -13,6 +13,6 @@ public class RegistrationDetails {
 
   private UUID eventId;
   private String name;
-  private FoodType foodPreference;
+  private FoodPreference foodPreference;
 
 }

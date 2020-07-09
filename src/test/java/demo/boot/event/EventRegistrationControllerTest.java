@@ -42,7 +42,7 @@ public class EventRegistrationControllerTest {
   public void shouldReturnNotFound() throws Exception {
     final UUID eventId = UUID.randomUUID();
     final String name = "Albert Attard";
-    final FoodType foodPreference = FoodType.MEAT;
+    final FoodPreference foodPreference = FoodPreference.MEAT;
     final RegistrationRequest registrationRequest = new RegistrationRequest( name, foodPreference );
     final RegistrationDetails details = new RegistrationDetails( eventId, name, foodPreference );
 
@@ -68,7 +68,7 @@ public class EventRegistrationControllerTest {
     final UUID eventId = UUID.randomUUID();
     final UUID confirmationId = UUID.randomUUID();
     final String name = "Albert Attard";
-    final FoodType foodPreference = FoodType.MEAT;
+    final FoodPreference foodPreference = FoodPreference.MEAT;
     final RegistrationRequest registrationRequest = new RegistrationRequest( name, foodPreference );
     final RegistrationDetails details = new RegistrationDetails( eventId, name, foodPreference );
 
