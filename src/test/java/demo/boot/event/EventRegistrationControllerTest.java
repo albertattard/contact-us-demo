@@ -82,7 +82,7 @@ public class EventRegistrationControllerTest {
           .content( jsonObjectMapper.writeValueAsString( registrationRequest ) )
       )
       .andExpect( status().isCreated() )
-      .andExpect( header().string( "Location", "/event/registration/" + confirmationId ) )
+      .andExpect( header().string( "Location", String.format( "/event/registration/%s", confirmationId ) ) )
       .andExpect( jsonPath( "$" ).isMap() )
       .andExpect( jsonPath( "$.id", is( confirmationId.toString() ) ) )
     ;

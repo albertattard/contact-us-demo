@@ -11,5 +11,4 @@ public class RegistrationRequest {
 
   private String name;
   private FoodPreference foodPreference;
-
 }

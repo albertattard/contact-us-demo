@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 import java.util.UUID;
+import java.util.function.Function;
 
 @RestController
 @AllArgsConstructor
@@ -27,12 +28,14 @@ public class EventRegistrationController {
 
     return service
       .register( details )
-      .map(
-        confirmation -> ResponseEntity
-          .created( URI.create( "/event/registration/" + confirmation.getId() ) )
-          .body( confirmation )
-      )
+      .map( mapToResponse() )
       .orElse( ResponseEntity.notFound().build() )
       ;
+  }
+
+  private Function<RegistrationConfirmation, ResponseEntity<RegistrationConfirmation>> mapToResponse() {
+    return confirmation -> ResponseEntity
+      .created( URI.create( "/event/registration/" + confirmation.getId() ) )
+      .body( confirmation );
   }
 }
