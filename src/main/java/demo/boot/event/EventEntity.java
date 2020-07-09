@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -33,7 +34,7 @@ public class EventEntity {
   @JoinColumn( name = "office", nullable = false )
   private OfficeEntity office;
 
-  @OneToMany( mappedBy = "event" )
+  @OneToMany( mappedBy = "event", cascade = CascadeType.ALL )
   private List<EventAttendeeEntity> attendees = new ArrayList<>();
 
   public void addAttendee( final EventAttendeeEntity attendee ) {

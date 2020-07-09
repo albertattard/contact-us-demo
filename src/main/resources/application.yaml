@@ -14,10 +14,10 @@ spring:
       ddl-auto: validate
 
   rabbitmq:
-    host: ${RABBITMQ_HOST}
-    port: ${RABBITMQ_PORT}
-    username: ${RABBITMQ_USERNAME}
-    password: ${RABBITMQ_PASSWORD}
+    host: ${MESSAGE_QUEUE_HOST}
+    port: ${MESSAGE_QUEUE_PORT}
+    username: ${MESSAGE_QUEUE_USERNAME}
+    password: ${MESSAGE_QUEUE_PASSWORD}
 
 management:
   endpoints:
