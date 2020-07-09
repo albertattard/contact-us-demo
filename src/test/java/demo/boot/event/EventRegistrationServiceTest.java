@@ -51,8 +51,7 @@ public class EventRegistrationServiceTest {
 
     when( eventRepository.findById( eq( eventId ) ) ).thenReturn( Optional.empty() );
 
-    final EventRegistrationService subject = withService();
-    final Optional<RegistrationConfirmation> confirmation = subject.register( details );
+    final Optional<RegistrationConfirmation> confirmation = withService().register( details );
     assertEquals( Optional.empty(), confirmation );
 
     verify( eventRepository, times( 1 ) ).findById( eventId );
@@ -69,8 +68,7 @@ public class EventRegistrationServiceTest {
     when( eventRepository.findById( eq( eventId ) ) ).thenReturn( Optional.of( officeEntity ) );
     when( officeEntity.getDate() ).thenReturn( LocalDate.now().minusDays( 1 ) );
 
-    final EventRegistrationService subject = withService();
-    final Optional<RegistrationConfirmation> confirmation = subject.register( details );
+    final Optional<RegistrationConfirmation> confirmation = withService().register( details );
     assertEquals( Optional.empty(), confirmation );
 
     verify( eventRepository, times( 1 ) ).findById( eventId );
@@ -93,8 +91,7 @@ public class EventRegistrationServiceTest {
     doNothing().when( officeEntity ).addAttendee( attendeeEntity );
     when( eventRepository.save( eq( officeEntity ) ) ).thenReturn( officeEntity );
 
-    final EventRegistrationService subject = withService();
-    final Optional<RegistrationConfirmation> confirmation = subject.register( details );
+    final Optional<RegistrationConfirmation> confirmation = withService().register( details );
     assertTrue( confirmation.isPresent() );
 
     verify( eventRepository, times( 1 ) ).findById( eventId );
